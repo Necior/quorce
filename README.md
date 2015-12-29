@@ -4,7 +4,7 @@
 
 ## Installation
 
-Clone the repository. Create a virtual environment using `pyvenv venv` (where `venv` is an arbitrary name; you can change it). Activate it (`source venv/bin/activate`). Install Flask using `pip3 install Flask Flask-Misaka`.
+Clone the repository. Create a virtual environment using `pyvenv venv` (where `venv` is an arbitrary name; you can change it). Activate it (`source venv/bin/activate`). Install required packages using `pip3 install Flask Flask-Misaka`.
 
 ## Setting up
 
