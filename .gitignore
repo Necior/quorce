@@ -1,4 +1,5 @@
 database.db
+venv/
 
 # Python-related
 __pycache__/
