@@ -49,7 +49,6 @@ def add_quote():
 def list_quotes():
     cur = g.db.execute('select text, source from quotes order by id desc')
     quotes = cur.fetchall()
-    print(quotes)
     return render_template('home.html', quotes=quotes)
 
 
