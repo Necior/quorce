@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Quorce</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style type="text/css">
+            .quote_container {
+                background-color: #efefef;
+                margin-left: 5%;
+                margin-right: 5%;
+            }
+        </style>
+    </head>
+    <body>
+        <form action="{{ url_for('add_quote') }}" method="post" class="add_quote_form">
+            <textarea name="text" rows="5" cols="50" placeholder="Quote (you can use Markdown here)"></textarea><br/>
+            <input type="text" name="source" size="43" placeholder="Source (URL, book name etc.)"><br/>
+            <input type="password" name="password" size="43" placeholder="Password"><br/>
+            <input type="submit" value="Add quote">
+        </form>
+
+        {% for q in quotes %}
+            <div class="quote_container">
+                <blockquote>
+                    {{ q.text | markdown }}
+                </blockquote>
+                <span>from {{ q.source }}</span>
+            </div>
+        {% else %}
+            <div>No quotes. Maybe add some?</div>
+        {% endfor %}
+    </body>
+</html>
