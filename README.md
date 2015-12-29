@@ -1,6 +1,6 @@
 # quorce
 
-*quorce* (/kwəɹs/) is a simple, single-user web app to store quotes.
+*quorce* (/kwəɹs/) is a simple, single-user web app to store quotes. This software is **not** stable yet.
 
 ## Installation
 
