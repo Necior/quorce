@@ -13,6 +13,7 @@
                 background-color: #efefef;
                 margin-left: 5%;
                 margin-right: 5%;
+                margin-top: 1em;
             }
         </style>
     </head>
@@ -26,10 +27,11 @@
 
         {% for q in quotes %}
             <div class="quote_container">
+                <div>added on {{ q.datetime.strftime('%Y-%m-%d at %H.%M') }}</div>
                 <blockquote>
                     {{ q.text | markdown }}
                 </blockquote>
-                <span>from {{ q.source }} (added on {{ q.datetime.strftime('%Y-%m-%d at %H.%M') }})</span>
+                <div>~{{ q.source }}</div>
             </div>
         {% else %}
             <div>No quotes. Maybe add some?</div>
