@@ -1,3 +1,4 @@
+{% from 'quote.html' import quote %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -26,13 +27,7 @@
         </form>
 
         {% for q in quotes %}
-            <div class="quote_container">
-                <div>#{{ q.id }}, added on {{ q.datetime.strftime('%Y-%m-%d at %H.%M') }}</div>
-                <blockquote>
-                    {{ q.text | markdown }}
-                </blockquote>
-                <div>~{{ q.source }}</div>
-            </div>
+            {{ quote(q) }}
         {% else %}
             <div>No quotes. Maybe add some?</div>
         {% endfor %}

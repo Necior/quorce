@@ -1,0 +1,9 @@
+{% macro quote(q) %}
+    <div class="quote_container">
+        <div>#{{ q.id }}, added on {{ q.datetime.strftime('%Y-%m-%d at %H.%M') }}</div>
+        <blockquote>
+            {{ q.text | markdown }}
+        </blockquote>
+        <div>~{{ q.source }}</div>
+    </div>
+{% endmacro %}
