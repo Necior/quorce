@@ -52,7 +52,7 @@ def add_quote():
 @app.route('/')
 def list_quotes():
     cur = g.db.execute(
-            'select text, source, datetime from quotes order by id desc')
+            'select id, text, source, datetime from quotes order by id desc')
     quotes = cur.fetchall()
     return render_template('home.html', quotes=quotes)
 

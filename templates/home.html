@@ -27,7 +27,7 @@
 
         {% for q in quotes %}
             <div class="quote_container">
-                <div>added on {{ q.datetime.strftime('%Y-%m-%d at %H.%M') }}</div>
+                <div>#{{ q.id }}, added on {{ q.datetime.strftime('%Y-%m-%d at %H.%M') }}</div>
                 <blockquote>
                     {{ q.text | markdown }}
                 </blockquote>
