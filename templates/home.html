@@ -29,7 +29,7 @@
                 <blockquote>
                     {{ q.text | markdown }}
                 </blockquote>
-                <span>from {{ q.source }}</span>
+                <span>from {{ q.source }} (added on {{ q.datetime.strftime('%Y-%m-%d at %H.%M') }})</span>
             </div>
         {% else %}
             <div>No quotes. Maybe add some?</div>

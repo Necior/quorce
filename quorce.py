@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import datetime
 import sqlite3
 from contextlib import closing
 from flask import Flask, g, render_template, redirect, request, url_for
@@ -12,7 +13,8 @@ app.config.from_object('config')
 
 
 def connect_db():
-    rv = sqlite3.connect(app.config['DATABASE'])
+    rv = sqlite3.connect(app.config['DATABASE'],
+                         detect_types=sqlite3.PARSE_DECLTYPES)
     rv.row_factory = sqlite3.Row
     return rv
 
@@ -39,15 +41,18 @@ def teardown_request(exception):
 @app.route('/add_quote', methods=['POST'])
 def add_quote():
     if request.form['password'] == app.config['PASSWORD']:
-        g.db.execute('insert into quotes (text, source) values (?, ?)',
-                     (request.form['text'], request.form['source']))
+        now = datetime.datetime.now()
+        g.db.execute(
+                'insert into quotes (text, source, datetime) values (?, ?, ?)',
+                (request.form['text'], request.form['source'], now))
         g.db.commit()
     return redirect(url_for('list_quotes'))
 
 
 @app.route('/')
 def list_quotes():
-    cur = g.db.execute('select text, source from quotes order by id desc')
+    cur = g.db.execute(
+            'select text, source, datetime from quotes order by id desc')
     quotes = cur.fetchall()
     return render_template('home.html', quotes=quotes)
 
