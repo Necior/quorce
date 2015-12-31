@@ -4,7 +4,7 @@
         <blockquote>
             {{ q.text | markdown(autolink=True, escape=True) }}
         </blockquote>
-        <div>~{{ q.source }}</div>
+        <div>~{{ q.source | markdown(autolink=True, escape=True) }}</div>
     </div>
 {% endmacro %}
 
