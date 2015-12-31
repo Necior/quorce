@@ -1,6 +1,6 @@
 {% macro quote(q) %}
     <div class="quote_container">
-        <div>#{{ q.id }}, added on {{ q.datetime.strftime('%Y-%m-%d at %H.%M') }}</div>
+        <div><a href="{{ url_for('show_quote', id=q.id) }}">#{{ q.id }}</a>, added on {{ q.datetime.strftime('%Y-%m-%d at %H.%M') }}</div>
         <blockquote>
             {{ q.text | markdown }}
         </blockquote>

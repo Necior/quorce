@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% from 'macros.html' import form, quote %}
+{% block body %}
+    {{ form() }}
+    {{ quote(q) }}
+{% endblock %}
