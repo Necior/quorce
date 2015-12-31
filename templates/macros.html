@@ -7,3 +7,12 @@
         <div>~{{ q.source }}</div>
     </div>
 {% endmacro %}
+
+{% macro form() %}
+        <form action="{{ url_for('add_quote') }}" method="post" class="add_quote_form">
+            <textarea name="text" rows="5" cols="50" placeholder="Quote (you can use Markdown here)"></textarea><br/>
+            <input type="text" name="source" size="43" placeholder="Source (URL, book name etc.)"><br/>
+            <input type="password" name="password" size="43" placeholder="Password"><br/>
+            <input type="submit" value="Add quote">
+        </form>
+{% endmacro %}
