@@ -1,6 +1,10 @@
 {% macro quote(q) %}
     <div class="quote_container">
-        <div><a href="{{ url_for('show_quote', id=q.id) }}">#{{ q.id }}</a>, added on {{ q.datetime.strftime('%Y-%m-%d at %H.%M') }}</div>
+        <div>
+        {% if q.id %}
+            <a href="{{ url_for('show_quote', id=q.id) }}">#{{ q.id }}</a>,
+        {% endif %}
+        added on {{ q.datetime.strftime('%Y-%m-%d at %H.%M') }}</div>
         <blockquote>
             {{ q.text | markdown(autolink=True, escape=True) }}
         </blockquote>
@@ -9,10 +13,11 @@
 {% endmacro %}
 
 {% macro form() %}
-        <form action="{{ url_for('add_quote') }}" method="post" class="add_quote_form">
+        <form method="post" class="add_quote_form">
             <textarea name="text" rows="5" cols="50" placeholder="Quote (you can use Markdown here)"></textarea><br/>
             <input type="text" name="source" size="43" placeholder="Source (URL, book name etc.)"><br/>
             <input type="password" name="password" size="43" placeholder="Password"><br/>
-            <input type="submit" value="Add quote">
+            <input type="submit" value="Add quote" formaction="{{ url_for('add_quote') }}">
+            <input type="submit" value="Preview" formaction="{{ url_for('preview_quote') }}" formtarget="_blank">
         </form>
 {% endmacro %}

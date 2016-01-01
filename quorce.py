@@ -65,5 +65,14 @@ def show_quote(id):
     return render_template('quote.html', q=quote)
 
 
+@app.route('/preview', methods=['POST'])
+def preview_quote():
+    quote = {'text': request.form['text'],
+             'source': request.form['source'],
+             'datetime': datetime.datetime.now(),
+             }
+    return render_template('quote.html', q=quote)
+
+
 if __name__ == '__main__':
     app.run()
