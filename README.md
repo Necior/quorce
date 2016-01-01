@@ -18,7 +18,7 @@ Edit `config.py` according to your needs. Create database using `./init_db.py` (
 
 ### Deployment
 
-Set the `SECRET_KEY` and turn off the `DEBUG` flag in `config.py`. Deploy according to the [Flask documentation](http://flask.pocoo.org/docs/0.10/deploying/#deployment).
+Turn off the `DEBUG` flag in `config.py`. Deploy according to the [Flask documentation](http://flask.pocoo.org/docs/0.10/deploying/#deployment).
 
 ## FAQ
 
