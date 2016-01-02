@@ -2,7 +2,7 @@
     <div class="quote_container">
         <div>
         {% if q.id %}
-            <a href="{{ url_for('show_quote', id=q.id) }}">#{{ q.id }}</a>,
+            <a href="{{ url_for('show_quote', qid=q.id) }}">#{{ q.id }}</a>,
         {% endif %}
         added on {{ q.datetime.strftime('%Y-%m-%d at %H.%M') }}</div>
         <blockquote>

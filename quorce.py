@@ -57,10 +57,10 @@ def list_quotes():
     return render_template('home.html', quotes=quotes)
 
 
-@app.route('/quote/<int:id>')
-def show_quote(id):
+@app.route('/quote/<int:qid>')
+def show_quote(qid):
     cur = g.db.execute(
-            'select id, text, source, datetime from quotes where id=?', (id,))
+            'select id, text, source, datetime from quotes where id=?', (qid,))
     quote = cur.fetchone()
     return render_template('quote.html', q=quote)
 
