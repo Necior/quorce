@@ -4,7 +4,7 @@ import datetime
 import sqlite3
 from contextlib import closing
 from flask import Flask, g, render_template, redirect, request, url_for
-from flask.ext.misaka import Misaka
+from flask_misaka import Misaka
 
 app = Flask(__name__)
 Misaka(app)
