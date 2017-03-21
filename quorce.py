@@ -35,6 +35,7 @@ def before_request():
 def teardown_request(exception):
     db = getattr(g, 'db', None)
     if db is not None:
+        db.commit()
         db.close()
 
 
@@ -63,6 +64,12 @@ def show_quote(qid):
             'select id, text, source, datetime from quotes where id=?', (qid,))
     quote = cur.fetchone()
     return render_template('quote.html', q=quote)
+
+
+@app.route('/delete/<int:qid>')
+def delete_quote(qid):
+    g.db.execute('delete from quotes where id=?', (qid,))
+    return redirect(url_for('list_quotes'))
 
 
 @app.route('/preview', methods=['POST'])
